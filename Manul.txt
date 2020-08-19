@@ -1,0 +1,10 @@
+mysql command (Manual)
+
+
+mysqld --initialize-insecure
+
+mysqld --console
+
+mysql -u root -p
+
+mysqladmin -u root shutdown

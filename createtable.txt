@@ -1,0 +1,107 @@
+CREATE database cinema;
+USE cinema;
+
+
+CREATE TABLE employee (
+	emp_id INT AUTO_INCREMENT,
+    emp_name VARCHAR(50),
+    birth_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    sex CHAR,
+    salary FLOAT,
+    CONSTRAINT emp_pk PRIMARY KEY (emp_id)
+	);
+
+
+CREATE TABLE cashier(
+	cashier_id int,
+	cashier_name VARCHAR(50),
+    start_date datetime DEFAULT(NULL),
+    emp_id int,
+    CONSTRAINT cashier_pk PRIMARY KEY (cashier_id),
+    CONSTRAINT cashier_fk FOREIGN KEY (emp_id) REFERENCES employee(emp_id) ON DELETE SET NULL
+    
+	);
+
+
+CREATE TABLE customer(
+	cus_id INT ,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    CONSTRAINT cus_pk PRIMARY KEY (cus_id)
+    );
+    
+CREATE TABLE payment(
+	bill_no INT AUTO_INCREMENT,
+    amount FLOAT,
+    date_time DATETIME,
+    cus_id INT,
+    CONSTRAINT pay_pk PRIMARY KEY (bill_no),
+    CONSTRAINT pay_fk FOREIGN KEY (cus_id) REFERENCES customer(cus_id) ON DELETE SET NULL
+    );
+    
+
+
+CREATE TABLE vip_seat(
+	seat_no INT,
+    availabe_seats INT,
+    extras VARCHAR(40),
+    vip_price FLOAT,
+    CONSTRAINT vip_pk PRIMARY KEY (seat_no)
+    );
+    
+    
+CREATE TABLE movie(
+	movie_id INT,
+    movie_name VARCHAR(75),
+    type VARCHAR(40),
+    duration INT,
+    language VARCHAR(40),
+    CONSTRAINT mov_pk PRIMARY KEY (movie_id)
+);    
+    
+CREATE TABLE ticket(
+		ticket_id INT,
+        venue VARCHAR(30),
+        seat_no INT,
+        date_time DATETIME,
+        availabe_seats INT,
+        movie_id INT,
+        cus_id INT,
+        vip_seat INT,
+        CONSTRAINT tic_pk PRIMARY KEY (ticket_id),
+		CONSTRAINT tic_fk1 FOREIGN KEY (movie_id) REFERENCES movie(movie_id) ON DELETE SET NULL,
+		CONSTRAINT tic_fk2 FOREIGN KEY (cus_id) REFERENCES customer(cus_id) ON DELETE SET NULL,
+		CONSTRAINT tic_fk3 FOREIGN KEY (vip_seat) REFERENCES vip_seat(seat_no) ON DELETE SET NULL
+        );
+        
+	
+
+        
+        
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

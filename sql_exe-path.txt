@@ -1,0 +1,5 @@
+cd Program Files\MySQL\MySQL Sever 8.0\bin\mysql -u root -p
+
+cd Program Files\MySQL\MySQL Sever 8.0\bin>mysqld --console
+
+python -m pip install --upgrade pip
